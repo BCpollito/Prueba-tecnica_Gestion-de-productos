@@ -7,7 +7,7 @@ exports.obtenerProductos = async (req, res) => {
         res.json(productos);
     } catch (error) {
         console.log(error);
-        res.status(500).json({ error: 'Error al obetener productos'});
+        res.status(500).json({ error: 'Error al obetener productos' });
     }
 }
 
@@ -15,7 +15,7 @@ exports.obtenerProductos = async (req, res) => {
 exports.obtenerProductosID = async (req, res) => {
     try {
         const producto = await Producto.findByPk(req.params.id);
-        if (!producto) return res.status(404).json({ error: 'Producto no encontrado'});
+        if (!producto) return res.status(404).json({ error: 'Producto no encontrado' });
         res.json(producto);
     } catch (error) {
         console.log(error);
@@ -36,14 +36,16 @@ exports.crearProducto = async (req, res) => {
 
 //eliminar producto
 exports.eliminarProducto = async (req, res) => {
+    const { id } = req.params;
     try {
-        const producto = await Producto.delete(req.params.id);
-        if (!producto) return res.status(404).json({ error: 'Producto no encontrado' });
-
-        await producto.destroy();
-        res.json({ mensaje: 'producto eliminado'})
+        const deleted = await Producto.destroy({ where: { id } });
+        if (deleted) {
+            res.status(200).json({ message: 'Producto eliminado' });
+        } else {
+            res.status(404).json({ message: 'Producto no encontrado' });
+        }
     } catch (error) {
         console.log(error);
-         res.status(500).json({ error: 'Error al eliminar el producto' });
-    }    
+        res.status(500).json({ error: 'Error al eliminar el producto' });
+    }
 }
