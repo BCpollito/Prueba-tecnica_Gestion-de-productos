@@ -1,10 +1,12 @@
 import { Button } from "@material-tailwind/react";
+import Listarproductos from "./components/ListaProductos";
+import './config/axios.config'
 
 function App() {
 
   return (
     <>
-    <div><p className="bg-red-500 text-white"> holaa</p></div>
+    <Listarproductos />
     </>
   )
 }
