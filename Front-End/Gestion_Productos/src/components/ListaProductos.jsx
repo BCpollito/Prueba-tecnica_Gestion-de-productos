@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 export default function Listarproductos() {
 
-    const TABLE_HEAD = ["ID","Nombre", "Precio", "En stock", "Acciones"];
+    const TABLE_HEAD = ["ID", "Nombre", "Precio", "En stock", "Acciones"];
 
     const [Productos, setProductos] = useState([]);
 
@@ -23,15 +23,15 @@ export default function Listarproductos() {
     }, [])
 
     const handleDeleteRegistro = async (key) => {
-    try {
-      await axios.delete(`/productos/${key}`);
-      alert("registro eliminado");
-      window.location.reload();
-    } catch (error) {
-      console.error("Error al eliminar producto:", error);
-      alert("Hubo un error al eliminar el producto");
-    }
-  };
+        try {
+            await axios.delete(`/productos/${key}`);
+            alert("registro eliminado");
+            window.location.reload();
+        } catch (error) {
+            console.error("Error al eliminar producto:", error);
+            alert("Hubo un error al eliminar el producto");
+        }
+    };
 
     return (
         <>
@@ -76,7 +76,7 @@ export default function Listarproductos() {
                                 <td className="p-4">
                                     <Typography as="a" href="#" variant="small" color="blue-gray" className="font-medium">
                                         <Button color="red"
-                                        onClick={() => handleDeleteRegistro(id)}
+                                            onClick={() => handleDeleteRegistro(id)}
                                         >Eliminar</Button>
                                     </Typography>
                                 </td>
@@ -85,6 +85,12 @@ export default function Listarproductos() {
                     </tbody>
                 </table>
             </Card>
+            <div className="fixed bottom-4 right-4 z-50 active:scale-100 focus:outline-none focus:ring-0">
+                <Button
+                    color="blue"
+                    size="lg"
+                    ripple={true}>Añadir Producto</Button>
+            </div>
         </>
     )
 }
