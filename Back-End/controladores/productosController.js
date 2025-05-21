@@ -26,8 +26,14 @@ exports.obtenerProductosID = async (req, res) => {
 //crear prodcuto
 exports.crearProducto = async (req, res) => {
     try {
-        const nuevoProducto = await Producto.create(req.body);
-        res.status(201).json(nuevoProducto);
+        const { nombre, precio } = req.body;
+
+        if (!nombre.trim() || !precio.trim()) {
+            return res.json({ error: true });
+        } else {
+            const nuevoProducto = await Producto.create({ nombre, precio });
+            res.status(201).json(nuevoProducto);
+        }
     } catch (error) {
         console.log(error);
         res.status(500).json({ error: 'Error al crear el producto' });
