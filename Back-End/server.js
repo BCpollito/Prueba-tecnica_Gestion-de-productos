@@ -12,14 +12,10 @@ app.use(express.json());
 app.use('/productos',productosRoutes);
 
 
-
-
-
-
 //funcion asincronica para inicar el servidor y contectar la DB
 const StarServer = async () => {
     try {
-        await sequelize.sync(); //sincroniza los modelos con la base de datos 
+        await sequelize.sync();
         console.log('Base de datos sincronizada');
 
         app.listen(3000, () => {

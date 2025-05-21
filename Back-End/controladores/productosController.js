@@ -14,7 +14,15 @@ exports.obtenerProductos = async (req, res) => {
 //obtener productos por id
 exports.obtenerProductosID = async (req, res) => {
     try {
-        const producto = await Producto.findByPk(req.params.id);
+        const { caracter } = req.params;
+        let producto;
+
+        if (!isNaN(caracter)) {
+            producto = await Producto.findByPk(caracter);
+        } else {
+            producto = await Producto.findOne({ where: { nombre: caracter } });
+        }
+
         if (!producto) return res.status(404).json({ error: 'Producto no encontrado' });
         res.json(producto);
     } catch (error) {
@@ -28,7 +36,7 @@ exports.crearProducto = async (req, res) => {
     try {
         const { nombre, precio } = req.body;
 
-        if (!nombre.trim() || !precio.trim()) {
+        if (!nombre.trim() || !precio.trim() || isNaN(precio)) {
             return res.json({ error: true });
         } else {
             const nuevoProducto = await Producto.create({ nombre, precio });
