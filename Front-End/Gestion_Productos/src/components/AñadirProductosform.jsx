@@ -7,10 +7,13 @@ import {
 } from "@material-tailwind/react";
 import axios from 'axios';
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 export default function AñadirProducto() {
     const [nombre, setNombre] = useState("");
     const [precio, setPrecio] = useState("");
+
+    const navigate = useNavigate();
 
     const handleSubmit = async () => {
         try {
@@ -20,9 +23,10 @@ export default function AñadirProducto() {
             });
 
             if (response.data.error) {
-                alert('Los campos no pueden estar vacios');
+                alert('Los campos no pueden estar vacios / el precio no puede tener letras');
             } else {
                 alert('Producto agregado!');
+                navigate('/mostrarproductos')
             }
         } catch (error) {
             console.error('Error al agregar', error);
