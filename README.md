@@ -26,7 +26,7 @@ README.md → Este archivo
 
 1. Ve a la carpeta del backend:
 
-``terminal
+```terminal
 cd back-end
 
 2. Instala las dependencias:
@@ -71,6 +71,7 @@ CREATE TABLE Productos (
 
 ``terminal
 cd front-end
+cd gestion_productos
 
 2. Instala las dependencias:
 
