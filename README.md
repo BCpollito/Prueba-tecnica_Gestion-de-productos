@@ -24,30 +24,30 @@ README.md → Este archivo
 
 ## ⚙️ Configuración del Backend
 
-1. Ve a la carpeta del backend:
+Ve a la carpeta del backend:
 
 ``terminal
 cd back-end
 
-2. Instala las dependencias:
+Instala las dependencias:
 
 ``terminal
 npm install
 
-3. Crea una base de datos PostgreSQL llamada por ejemplo:
+Crea una base de datos PostgreSQL llamada por ejemplo:
 
 ``terminal
 CREATE DATABASE productos_db;
 
-4. Configura el archivo .env con tus credenciales (si aplica) o edita la conexión en tu archivo config.js de Sequelize.
+Configura el archivo .env con tus credenciales (si aplica) o edita la conexión en tu archivo config.js de Sequelize.
 
-5. Ejecuta las migraciones para crear la tabla de productos:
+Ejecuta las migraciones para crear la tabla de productos:
 
 ``terminal
 npx sequelize-cli db:migrate
     // Si no usas migraciones, puedes ejecutar el script SQL manualmente (ver más abajo).
 
-6. Inicia el servidor 
+Inicia el servidor 
 
 ``terminal
 node server.js
@@ -67,18 +67,18 @@ CREATE TABLE Productos (
 
 ## 💻 Configuración del Frontend
 
-1. Ve a la carpeta del frontend:
+Ve a la carpeta del frontend:
 
 ``terminal
 cd front-end
 cd gestion_productos
 
-2. Instala las dependencias:
+Instala las dependencias:
 
  ``terminal
  npm install
 
-3. Inicia la aplicación React:
+Inicia la aplicación React:
 
 ``terminal
 npm run dev
